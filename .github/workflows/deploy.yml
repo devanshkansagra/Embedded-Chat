@@ -26,9 +26,6 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Build the package
-        run: yarn build
-
       - name: Build Storybook
         run: yarn build:storybook
         working-directory: packages/react
@@ -68,5 +65,7 @@ jobs:
       - name: Build and publish Storybook
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
+          install_command: yarn install
+          build_command: yarn build
           path: build
           checkout: false
