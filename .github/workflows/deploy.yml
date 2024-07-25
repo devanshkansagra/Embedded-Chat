@@ -65,10 +65,8 @@ jobs:
           name: storybooks
           path: build
 
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v4
+      - name: Build and publish Storybook
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          target_branch: master
-          build_dir: build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: build
+          checkout: false
