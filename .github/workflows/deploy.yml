@@ -37,7 +37,7 @@ jobs:
         run: yarn build:storybook
         working-directory: packages/ui-elements
 
-      - name: Prepare GitHub Pages Folder
+      - name: Prepare Build Folder
         run: |
           mkdir -p build
           cp -r packages/react/storybook-static/* build/
