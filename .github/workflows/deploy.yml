@@ -41,14 +41,8 @@ jobs:
           mkdir -p build/ui-elements
           mv -v packages/ui-elements/storybook-static/* build/ui-elements/
 
-      - name: Upload Storybook Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: storybooks
-          path: build/
-
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4 
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          token: ${{ github.token }}
-          artifact_name: storybooks
+          github_token: ${{ github.token }}
+          publish_dir: build
