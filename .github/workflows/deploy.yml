@@ -30,6 +30,10 @@ jobs:
         run: yarn build:storybook
         working-directory: packages/react
 
+      - name: Build e2e
+        run: npm run build
+        working-directory: packages/e2e-react
+
       - name: Build UI-Elements
         run: yarn build:storybook
         working-directory: packages/ui-elements
@@ -37,9 +41,11 @@ jobs:
       - name: Prepare Build Folder
         run: |
           mkdir -p build
-          mv -v packages/react/storybook-static/* build/
           mkdir -p build/ui-elements
+          mkdir -p build/e2e-react
+          mv -v packages/react/storybook-static/* build/
           mv -v packages/ui-elements/storybook-static/* build/ui-elements/
+          mv -v packages/e2e-react/dist/* build/e2e-react/
 
       - name: 'upload'
         uses: actions/upload-pages-artifact@v3
