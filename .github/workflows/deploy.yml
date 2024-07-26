@@ -41,10 +41,13 @@ jobs:
           mkdir -p build/ui-elements
           mv -v packages/ui-elements/storybook-static/* build/ui-elements/
 
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
+      - name: 'upload'
+        uses: actions/upload-pages-artifact@v3
+        with: 
+          path: build
+    
+      - id: deploy
+        name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
         with:
-          target_branch: master
-          build_dir: build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
