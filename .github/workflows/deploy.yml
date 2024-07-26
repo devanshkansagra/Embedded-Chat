@@ -41,8 +41,14 @@ jobs:
           mkdir -p build/ui-elements
           mv -v packages/ui-elements/storybook-static/* build/ui-elements/
 
-      - name: Build and publish Storybook
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+      - name: Upload Storybook Artifacts
+        uses: actions/upload-artifact@v2
         with:
-          path: build
-          checkout: false
+          name: storybooks
+          path: build/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4 
+        with:
+          token: ${{ github.token }}
+          artifact_name: storybooks
