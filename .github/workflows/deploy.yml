@@ -41,7 +41,7 @@ jobs:
           mkdir -p build/ui-elements
           cp -r packages/ui-elements/storybook-static/* build/ui-elements/
 
-      - name: Upload Artifacts
+      - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: storybooks
