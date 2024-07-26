@@ -42,8 +42,9 @@ jobs:
           mv -v packages/ui-elements/storybook-static/* build/ui-elements/
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: crazy-max/ghaction-github-pages@v2
         with:
-          github_token: ${{ github.token }}
-          publish_dir: build
-          publish_branch: master
+          target_branch: master
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
